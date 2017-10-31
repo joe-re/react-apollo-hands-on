@@ -3,17 +3,6 @@ import { graphql } from 'react-apollo';
 import REPOSITORY_QUERY from './graphql/Repositories';
 import Repository from './Repository';
 
-function getRepositories(params) {
-  const targets = params.search && params.search.edges || [];
-  const repositories = targets.map((v)  => {
-    if (v && v.node && v.node.__typename === 'Repository') {
-        return v.node;
-      }
-      return null;
-    });
-  return repositories;
-}
-
 function getLastCursor(params) {
   const targets = params.search && params.search.edges || [];
   const lastEdge = targets[targets.length -1];
