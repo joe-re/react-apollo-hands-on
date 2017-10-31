@@ -25,4 +25,5 @@ fragment RepositorySearchResult on Repository {
     totalCount
   }
   updatedAt
+  viewerHasStarred
 }
