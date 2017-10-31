@@ -28,15 +28,16 @@ function Repositories(props) {
   if (!props.searchResult.search && props.loading) {
     return <span>Loading</span>;
   }
-  const { searchResult } = props;
+  const { searchResult, loadNextPage } = props;
   const repos = searchResult.search.edges
     .map(v => v.node)
     .map(v => <Repository key={v.id} repository={v} />);
-  const lastCursor = getLastCursor(searchResult);
   return (
     <div>
       <div>{repos}</div>
-      <button>more</button>
+      { repos.length > 1 &&
+        <button onClick={e => loadNextPage(getLastCursor(searchResult)) }>more</button>
+      }
     </div>
   );
 }
