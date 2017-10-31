@@ -1,28 +1,6 @@
 import React from 'react';
-
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { token: '' }
-  }
-  render() {
-    return (
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          this.props.onSubmit(this.state.token);
-          this.setState({ token: '' });
-        }}
-      >
-        <input
-          value={this.state.token}
-          onChange={e => this.setState({ token: e.target.value })}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
-}
+import LoginForm from './LoginForm';
+import Page from './Page';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -35,7 +13,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.authorized ? null :
+        {this.state.authorized ? <Page /> :
           <LoginForm
             onSubmit={token => {
               window.token = token;

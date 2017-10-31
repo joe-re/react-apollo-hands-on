@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   target: 'web',
   resolve: {
-    extensions: [ '.js', '.jsx' ]
+    extensions: [ '.js', '.jsx', '.graphql' ]
   },
   entry: {
     app: './src/index.js',
@@ -19,7 +19,12 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      }
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      },
     ]
   },
   devServer: {

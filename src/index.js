@@ -7,7 +7,6 @@ import ReactApollo from 'react-apollo';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-console.log(createNetworkInterface);
 
 const networkInterface = createNetworkInterface({
   uri: 'https://api.github.com/graphql'
